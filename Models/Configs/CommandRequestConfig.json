@@ -1,0 +1,49 @@
+{
+  "Usings": [
+  ],
+  "Namespace": "API.UseCases.DomainEntities.CreateDomainEntity",
+  "ClassName": "CreateDomainEntityRequest",
+  "Constructor": [
+    {
+      "Type": "string",
+      "Name": "actionId"
+    },
+    {
+      "Type": "string",
+      "Name": "sessionId"
+    },
+    {
+      "Type": "string",
+      "Name": "decisionId"
+    }
+  ],
+  "Properties": [
+    {
+      "Modificator": "public",
+      "Type": "string",
+      "Name": "ActionId",
+      "Accessors": [
+        "get",
+        "set"
+      ]
+    },
+    {
+      "Modificator": "public",
+      "Type": "string",
+      "Name": "SessionId",
+      "Accessors": [
+        "get",
+        "set"
+      ]
+    },
+    {
+      "Modificator": "public",
+      "Type": "string",
+      "Name": "DecisionId",
+      "Accessors": [
+        "get",
+        "set"
+      ]
+    }
+  ]
+}

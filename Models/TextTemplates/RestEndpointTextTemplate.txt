@@ -1,0 +1,37 @@
+﻿{{- for item in usings }}using {{ item }};{{- end }}
+
+namespace {{ namespace }};
+
+/// <summary>
+/// 
+/// </summary>
+//[Authorize("user-write-access")]
+[Tags({{ tags }})]
+[Route({{ tags }})]
+public class {{ class_name }} : BaseApiController
+{
+    /// <summary>
+    /// 
+    /// </summary>
+    public {{ class_name }}({{ for par in injected_infrastructure }}
+        {{ par.type }} {{ par.name }}{{ if ! for.last }},{{ end }}{{- end }}
+        )
+    :base({{ for par in base_constructor }}{{ par }}{{ if !for.last}},{{ end -}}{{- end }})
+    {
+        {{ for prop in injected_properties }}
+        {{ prop.destination }} = {{ prop.source }};
+        {{ end }}
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    [Http{{ http_method }}]
+    [Route({{ route }})]
+    public async Task<Result<{{ method_return_type }}>> {{ http_method }}([FromBody] {{ input_type }} input)
+    {
+        return await _inMemoryBus.Send{{ in_memory_bus_method }}(
+            new {{ request_type }}({{ for prop in input_properties }}{{ prop.destination }}: input.{{ prop.source }}{{ if ! for.last }},{{ end }}{{ end }})
+            );
+    }
+}

@@ -1,0 +1,30 @@
+﻿{{- for item in usings }}using {{ item }};
+{{- end }}
+
+namespace {{ namespace }};
+
+/// <summary>
+/// 
+/// </summary>
+public class {{ class_name }} : INotificationHandler<{{ event_class_name }}>
+{
+    {{ for par in private_fields }}
+    {{ par.type }} {{ par.name }}{{ if ! for.last }}{{ end }}{{- end }};
+
+    public {{ class_name }}(
+        {{ for par in constructor }}
+        {{ par.type }} {{ par.name }}{{ if ! for.last }},{{ end }}{{- end }}
+        {{ for par in injected_infrastructure }}
+        {{ par.type }} {{ par.name }}{{ if ! for.last }},{{ end }}{{- end }})
+    {
+        {{ for prop in injected_properties }}
+        {{ prop.destination }} = {{ prop.source }};
+        {{ end }}
+    }
+
+    public async Task Handle({{ event_class_name }} @event, CancellationToken cancellationToken)
+    {
+        _logger.Information("{{ event_class_name }} Id: {Id}", @event.EntityId);
+        await Task.CompletedTask;
+    }
+}

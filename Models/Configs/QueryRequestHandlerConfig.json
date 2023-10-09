@@ -1,0 +1,43 @@
+{
+  "Usings": [
+  ],
+  "Namespace": "Web.API.UseCases.DomainEntities.GetDomainEntity",
+  "RequestType": "GetDomainEntityRequest",
+  "QueryReturnType": "GetDomainEntityDto",
+  "ClassName": "GetDomainEntityRequestHandler",
+  "BaseConstructor": [
+    "mapper"
+  ],
+  "Constructor": [
+    {
+      "Type": "string",
+      "Name": "actionId"
+    },
+    {
+      "Type": "string",
+      "Name": "sessionId"
+    },
+    {
+      "Type": "string",
+      "Name": "decisionId"
+    }
+  ],
+  "InjectedRequestClass": [
+    {
+      "Type": "GetDomainEntityRequest",
+      "Name": "request"
+    }
+  ],
+  "InjectedInfrastructure": [
+    {
+      "Type": "IMapper",
+      "Name": "mapper"
+    }
+  ],
+  "InjectedProperties": [
+
+  ],
+  "Properties": [
+
+  ]
+}
